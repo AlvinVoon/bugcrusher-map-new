@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #map{
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+    }
+  </style>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css" integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ==" crossorigin="" />
+  <script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js" integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ==" crossorigin=""></script>
+</head>
+<body>
+  <div id="map"></div>
+  <script>
+    var map=L.map('map').setView([4.39393,113.98602], 7);
+    L.tileLayer('https://api.maptiler.com/maps/streets/{z}/{x}/{y}.png?key=3OMUWndftRFywjZ1Vzj9',{
+      attribution:'<a href="https://www.maptiler.com/copyright/" target="_blank">&copy; MapTiler</a> <a href="https://www.openstreetmap.org/copyright" target="_blank">&copy; OpenStreetMap contributors</a>'
+    }).addTo(map);
+
+    var projectBorneoIcon=L.icon({
+      iconUrl:'https://static.wixstatic.com/media/1aafa3_cecec50151044a5f956027104bc6118a~mv2.png/v1/fill/w_287,h_120,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/project_borneo_2020_landscape_logo.png',
+      iconSize:[105,45],
+      iconAnchor:[30,0],
+    })
+    var trash_hero=L.icon({
+      iconUrl:'https://scontent.fkch1-2.fna.fbcdn.net/v/t31.18172-8/20545255_120459505260199_8808942746382831173_o.jpg?_nc_cat=102&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=wBdrP6cjWlwAX-bc2vl&_nc_ht=scontent.fkch1-2.fna&oh=00_AT83dj2M5RZmNo7QI6eQZwTP0yiFP90goUNtAvzjbVjB3g&oe=6312E317',
+      iconSize:[45,45],
+      iconAnchor:[30,0],
+    })
+
+
+    var muluparkIcon=L.icon({
+      iconUrl:'https://mulupark.com/wp-content/uploads/logo.png',
+      iconSize:[50,50],
+      iconAnchor:[27,0],
+    })
+
+    var marker=L.marker([1.54672, 110.34728], {icon:projectBorneoIcon}).addTo(map);
+    var marker2=L.marker([4.098729, 114.893310], {icon:muluparkIcon}).addTo(map);
+    var marker3=L.marker([2.60729, 117.893310], {icon:trash_hero}).addTo(map);
+    
+
+    marker.bindPopup("<b>Project Borneo</b>").openPopup()
+    marker2.bindPopup("<b>Gunung Mulu National Park</b>").openPopup()
+    marker3.bindPopup("<b>Trash Hero Malaysia</b>").openPopup()
+  </script>
+</body>
+</html>
